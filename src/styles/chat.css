@@ -1,0 +1,55 @@
+/* Chat da Sofi AI. No mobile é uma folha inferior; a partir de 640px, janela flutuante no canto. */
+.fab{position:fixed;left:0;right:0;bottom:0;z-index:80;display:flex;flex-direction:column;align-items:stretch;pointer-events:none;padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.fab>*{pointer-events:auto}
+.launcher{align-self:flex-end;display:inline-flex;align-items:center;justify-content:center;gap:10px;width:60px;height:60px;padding:0;margin:0 16px calc(16px + env(safe-area-inset-bottom,0px)) 0;background:var(--panel);color:#fff;border:1px solid var(--panel-line);border-radius:999px;font:600 1rem var(--font);cursor:pointer;box-shadow:0 16px 44px -12px rgba(0,0,0,.55)}
+.launcher .lbl{display:none}
+.launcher .sofi{width:48px;height:48px}
+.teaser{display:none;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:12px 16px;max-width:260px;font-size:.95rem;box-shadow:0 16px 44px -16px rgba(0,0,0,.4);cursor:pointer;text-align:left}
+.sofi{width:42px;height:42px;border-radius:50%;background:var(--cta);color:var(--cta-ink);display:grid;place-items:center;flex:none;position:relative}
+.sofi svg{width:22px;height:22px}
+
+.chat{background:var(--chat);color:var(--ink);display:flex;flex-direction:column;width:100%;height:min(86svh,700px);height:min(86dvh,700px);border:1px solid var(--line);border-radius:26px 26px 0 0;box-shadow:0 40px 100px -30px rgba(0,0,0,.6);overflow:hidden;padding-bottom:env(safe-area-inset-bottom,0px)}
+.chat[hidden]{display:none}
+.chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--panel);color:#fff}
+.chat-head .sofi::after{content:"";position:absolute;right:0;bottom:0;width:11px;height:11px;border-radius:50%;background:var(--green);border:2px solid var(--panel)}
+.chat-head .s{font-size:.8rem;color:var(--panel-muted)}
+.chat-head .hb{background:transparent;border:1px solid var(--panel-line);color:#fff;border-radius:999px;padding:8px 14px;min-height:36px;font-size:.8rem;font-weight:600;cursor:pointer}
+.chat-log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:10px;min-height:0;scroll-behavior:smooth}
+.msg{max-width:88%;padding:10px 14px;border-radius:18px;font-size:.98rem;line-height:1.42;overflow-wrap:anywhere}
+.msg.bot{background:var(--bot);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.user{background:var(--user);color:var(--user-ink);border-bottom-right-radius:6px;align-self:flex-end}
+.typing{display:inline-flex;gap:4px;padding:14px}
+.typing i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:bounce 1s infinite ease-in-out}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{opacity:.3;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}
+.chat-controls{padding:12px 16px 8px;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:10px;max-height:46%;overflow-y:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--blue);color:var(--blue);background:transparent;border-radius:999px;padding:8px 14px;min-height:44px;font:600 .93rem var(--font);cursor:pointer;text-align:left}
+.chip:hover{background:var(--blue);color:var(--surface)}
+.chip.alt{border-color:var(--line);color:var(--muted)}
+.chip.alt:hover{background:var(--bg);color:var(--ink)}
+.chat-form{display:flex;gap:8px}
+/* 16px mínimo evita o zoom automático do iOS ao focar o campo */
+.chat-form input{flex:1;min-width:0;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:11px 16px;min-height:44px;font:500 1rem var(--font)}
+.chat-foot{font-size:.74rem;color:var(--muted);padding:0 16px 12px;line-height:1.35}
+
+/* cartão de recomendação */
+.result{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px;align-self:stretch;display:flex;flex-direction:column;gap:10px}
+.result h4{font-size:1.3rem;line-height:1.1}
+.result p{font-size:.93rem;color:var(--muted)}
+.prio{display:inline-flex;font-size:.8rem;font-weight:700;border-radius:999px;padding:4px 12px;width:fit-content;border:1.5px solid currentColor}
+.prio.quente{color:var(--hot)}.prio.morno{color:var(--warm)}.prio.frio{color:var(--cold)}
+.result .actions{display:flex;flex-direction:column;gap:8px}
+.result .pill{justify-content:center;padding:11px 18px;font-size:.95rem}
+.result details{font-size:.8rem;color:var(--muted)}
+.result summary{cursor:pointer;font-weight:600}
+.result pre{margin-top:8px;background:var(--bg);border-radius:10px;padding:10px;overflow-x:auto;font-size:.74rem;color:var(--ink)}
+
+@media (min-width:640px){
+  .fab{left:auto;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));align-items:flex-end;gap:10px;padding:0}
+  .launcher{width:auto;height:auto;padding:8px 22px 8px 8px;margin:0}
+  .launcher .lbl{display:inline}
+  .launcher .sofi{width:42px;height:42px}
+  .teaser{display:block}
+  .chat{width:min(400px,calc(100vw - 32px));height:min(640px,calc(100svh - 110px));border-radius:26px;padding-bottom:0}
+}

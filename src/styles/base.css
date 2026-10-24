@@ -1,0 +1,12 @@
+/* Base global (mobile-first): tipografia, container e acessibilidade. */
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:clip}
+@media (min-width:640px){body{font-size:17px}}
+body.no-scroll{overflow:hidden}
+/* faixa sob a barra de status em celulares com notch */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--band)}
+h1,h2,h3,h4{letter-spacing:-.035em;text-wrap:balance;font-weight:600}
+.wrap{max-width:1280px;margin-inline:auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+button,a{font-family:inherit}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--cta);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}

@@ -1,0 +1,27 @@
+/* Tokens de design: cores, superfícies e tema escuro (automático ou via data-theme). */
+:root{
+  --bg:#EFF2F5; --surface:#FFFFFF; --ink:#0B1F3A; --muted:#4A5568; --line:#D9E0E8;
+  --blue:#0A4DA2;
+  --panel:#0B1F3A; --panel-ink:#FFFFFF; --panel-muted:#B9C6D8; --panel-line:rgba(255,255,255,.16);
+  --cta:#FFC93C; --cta-ink:#0B1F3A; --mint:#B8F5DC; --yellow:#FFC93C; --green:#2DD68C;
+  --chat:#FFFFFF; --bot:#EEF3F9; --user:#0A4DA2; --user-ink:#FFFFFF;
+  --hot:#B42318; --warm:#9A5B00; --cold:#175CD3;
+  --band:#FFC93C;
+  --font:"Instrument Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#07111F; --surface:#0E1D33; --ink:#EAF0F8; --muted:#A9B6C8; --line:#1F3350;
+    --blue:#7FB2FF; --panel:#0F2747;
+    --chat:#0A1626; --bot:#16304F; --user:#2F6FD6;
+    --hot:#FF8A80; --warm:#FFC266; --cold:#8FB8FF;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#07111F; --surface:#0E1D33; --ink:#EAF0F8; --muted:#A9B6C8; --line:#1F3350;
+  --blue:#7FB2FF; --panel:#0F2747;
+  --chat:#0A1626; --bot:#16304F; --user:#2F6FD6;
+  --hot:#FF8A80; --warm:#FFC266; --cold:#8FB8FF;
+  color-scheme:dark;
+}
